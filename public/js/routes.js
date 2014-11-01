@@ -1,4 +1,4 @@
-define(['app', 'pageController'], function (app) {
+define(['app', 'pageController', 'textDirective'], function (app) {
 
     'use strict';
 
@@ -7,7 +7,17 @@ define(['app', 'pageController'], function (app) {
         $routeProvider.
             when('/', {
                 templateUrl: './templates/page.html',
-                controller: 'PageController'
-            });
+                controller: 'PageController',
+                lang: 'en'
+            }).
+            when('/ru', {
+              templateUrl: './templates/page.html',
+              controller: 'PageController',
+              lang: 'ru'
+            }).
+            otherwise({
+              redirectTo: '/'
+            });;
+
     }]);
 });

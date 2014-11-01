@@ -1,9 +1,13 @@
-define(['app'], function (app) {
+define(['app', 'en', 'ru'], function (app, en, ru) {
 
     'use strict';
 
     app.constant('config', {
 
-        foo: 'World!'
+        foo: 'World!',
+
+        en: en,
+        ru: ru
+
     });
 });

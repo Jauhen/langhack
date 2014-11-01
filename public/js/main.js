@@ -11,6 +11,11 @@ requirejs.config({
 
         'pageController': 'js/controllers/pageController',
 
+        'textDirective': 'js/ng-text-directive',
+
+        'en': 'js/en',
+        'ru': 'js/ru',
+
         'app': 'js/app',
         'config': 'js/config',
         'routes': 'js/routes'
