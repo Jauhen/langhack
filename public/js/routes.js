@@ -6,14 +6,19 @@ define(['app', 'pageController', 'textDirective'], function (app) {
 
         $routeProvider.
             when('/', {
-                templateUrl: './templates/page.html',
+                templateUrl: './templates/page.html?en',
                 controller: 'PageController',
                 lang: 'en'
             }).
             when('/ru', {
-              templateUrl: './templates/page.html',
+              templateUrl: './templates/page.html?ru',
               controller: 'PageController',
               lang: 'ru'
+            }).
+            when('/by', {
+              templateUrl: './templates/page.html?by',
+              controller: 'PageController',
+              lang: 'by'
             }).
             otherwise({
               redirectTo: '/'

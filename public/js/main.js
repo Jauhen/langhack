@@ -15,6 +15,7 @@ requirejs.config({
 
         'en': 'js/lang/en',
         'ru': 'js/lang/ru',
+        'by': 'js/lang/by',
 
         'app': 'js/app',
         'config': 'js/config',

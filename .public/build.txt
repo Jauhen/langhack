@@ -17,8 +17,9 @@ components/jquery/jquery.js
 components/angular/angular.js
 components/angular-route/angular-route.js
 js/app.js
-js/en.js
-js/ru.js
+js/lang/en.js
+js/lang/ru.js
+js/lang/by.js
 js/config.js
 js/controllers/pageController.js
 js/ng-text-directive.js

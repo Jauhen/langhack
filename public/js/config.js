@@ -1,4 +1,4 @@
-define(['app', 'lang/en', 'lang/ru'], function (app, en, ru) {
+define(['app', 'en', 'ru', 'by'], function (app, en, ru, by) {
 
     'use strict';
 
@@ -7,7 +7,8 @@ define(['app', 'lang/en', 'lang/ru'], function (app, en, ru) {
         foo: 'World!',
 
         en: en,
-        ru: ru
+        ru: ru,
+        by: by
 
     });
 });

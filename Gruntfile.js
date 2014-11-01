@@ -39,7 +39,11 @@ module.exports = function (grunt) {
           optimize: 'uglify',
           modules: [
             { name: 'js/main' }
-          ]
+          ],
+          done: function(done) {
+            grunt.task.run('i18n-static');
+            done();
+          }
         }
       }
     },
@@ -75,7 +79,7 @@ module.exports = function (grunt) {
     'i18n-static': {
       src: ['public/templates/page.html'],
       options: {
-        langs: ['ru', 'en']
+        langs: ['ru', 'en', 'by']
       }
     }
   });
@@ -96,8 +100,6 @@ module.exports = function (grunt) {
           replace(/\);/, '') + ')()');
     }
 
-    grunt.log.writeln(JSON.stringify(langstrs));
-
     for (var i in filelist) {
       var file = filelist[i];
       grunt.log.writeln(file);
@@ -106,7 +108,7 @@ module.exports = function (grunt) {
       var reg = /<ng-trans-text>(.*?)<\/ng-trans-text>/g;
 
       for (var j in langs) {
-        var filename = file.substr(0, file.lastIndexOf('.')) + '_' + langs[j] +
+        var filename = '.' + file.substr(0, file.lastIndexOf('.')) + '_' + langs[j] +
             file.substr(file.lastIndexOf('.'));
         grunt.file.write(filename, source.replace(reg,
             function(str, first) {
@@ -115,6 +117,13 @@ module.exports = function (grunt) {
             }));
       }
     }
+
+    var main = grunt.file.read('.public/js/main.js');
+
+    for (var j in langs) {
+      main = main.replace('/templates/page.html?'+langs[j], '/templates/page_' + langs[j] +'.html')
+    }
+    grunt.file.write('.public/js/main.js', main);
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
