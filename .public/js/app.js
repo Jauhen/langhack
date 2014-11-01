@@ -1,0 +1,1 @@
+define(["angular","angularRoute"],function(e){return e.module("i18n-static",["ngRoute"])});

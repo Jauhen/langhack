@@ -13,8 +13,8 @@ requirejs.config({
 
         'textDirective': 'js/ng-text-directive',
 
-        'en': 'js/en',
-        'ru': 'js/ru',
+        'en': 'js/lang/en',
+        'ru': 'js/lang/ru',
 
         'app': 'js/app',
         'config': 'js/config',

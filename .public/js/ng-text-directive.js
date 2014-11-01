@@ -1,0 +1,1 @@
+define(["app","config"],function(e){e.directive("ngTransText",["config","$route",function(e,t){return{restrict:"AE",transclude:!1,link:function(n,r){r[0].innerHTML=e[t.current.lang][r[0].innerHTML]}}}])});

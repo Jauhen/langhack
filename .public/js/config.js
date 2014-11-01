@@ -1,0 +1,1 @@
+define(["app","en","ru"],function(e,t,n){e.constant("config",{foo:"World!",en:t,ru:n})});

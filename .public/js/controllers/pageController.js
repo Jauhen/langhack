@@ -1,0 +1,1 @@
+define(["app","config"],function(e){e.controller("PageController",["$scope","config","$route",function(e,t,n){e.foo=t[n.current.lang][t.foo]}])});

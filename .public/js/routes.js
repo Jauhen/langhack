@@ -1,0 +1,1 @@
+define(["app","pageController","textDirective"],function(e){e.config(["$routeProvider",function(e){e.when("/",{templateUrl:"./templates/page.html",controller:"PageController",lang:"en"}).when("/ru",{templateUrl:"./templates/page.html",controller:"PageController",lang:"ru"}).otherwise({redirectTo:"/"})}])});

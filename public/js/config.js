@@ -1,4 +1,4 @@
-define(['app', 'en', 'ru'], function (app, en, ru) {
+define(['app', 'lang/en', 'lang/ru'], function (app, en, ru) {
 
     'use strict';
 
