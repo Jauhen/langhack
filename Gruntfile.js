@@ -73,20 +73,30 @@ module.exports = function (grunt) {
     },
 
     'i18n-static': {
+      src: ['public/templates/page.html'],
       options: {
-        files: [
-          { pattern: 'public/templates/page.html', included: false }
-        ],
         langs: ['ru', 'en']
-      },
+      }
     }
   });
 
-  grunt.registerMultiTask('i18n-static', 'Static localize ng template.', function(opt) {
+  grunt.registerMultiTask('i18n-static', 'Static localize ng template.', function() {
 
-    grunt.log.writeln(JSON.stringify(this.options()));
 
-    var filelist = grunt.file.expand(this.data[0].pattern);
+    var langs = this.options({}).langs;
+
+    var filelist = grunt.file.expand(this.files[0].src);
+
+    var langstrs = {};
+
+    for (var j in langs) {
+      var langfile = grunt.file.read('public/js/lang/' + langs[j] + '.js');
+      langstrs[langs[j]] = eval('(' + langfile.
+          replace(/^define\(/, '').
+          replace(/\);/, '') + ')()');
+    }
+
+    grunt.log.writeln(JSON.stringify(langstrs));
 
     for (var i in filelist) {
       var file = filelist[i];
@@ -95,9 +105,15 @@ module.exports = function (grunt) {
 
       var reg = /<ng-trans-text>(.*?)<\/ng-trans-text>/g;
 
-      source = source.replace(reg, function(str, first) {return first});
+      for (var j in langs) {
+        var filename = file.substr(0, file.lastIndexOf('.')) + '_' + langs[j] +
+            file.substr(file.lastIndexOf('.'));
+        grunt.file.write(filename, source.replace(reg,
+            function(str, first) {
 
-      grunt.file.write(file + '1', source);
+              return langstrs[langs[j]][first] || first;
+            }));
+      }
     }
   });
 
